@@ -64,7 +64,7 @@ const validateLinks = route => {
           elem.status = `Error en el servidor, no se encuentra la pagina => ${err}`;
         });
       });
-      Promise.all(statusLinks).then((res) => {
+      Promise.all(statusLinks).then(() => {
         resolve(link);        
     });      
     }).catch((err) => {
@@ -73,16 +73,51 @@ const validateLinks = route => {
   }); 
 }  
 
+//Opcion --stats
+const statsLink = route => {
+  return new Promise((resolve, reject) => {
+    getLinks(route).then((link) => {
+      const linksUnique = new Set(link.map(elem => elem.URL))
+      resolve({
+        Unique: linksUnique.size,
+        Total: link.length
+      })
+    }).catch((err) => {
+      reject(err);
+    })
+  })
+}
+
+// opcion --validate y --stats
+const optionStatsValidate = route => {
+  return new Promise((resolve, reject) => {
+    validateLinks(route).then((links) => {
+      const linksUnique = new Set(links.map(elem => elem.URL))
+      let content = 0;
+      links.forEach((elem) => {
+        if (elem.status !== 'OK') {
+          content += 1;
+        }
+      })
+      // console.log(content);      
+      resolve({
+      Unique: linksUnique.size,
+      Total: links.length,
+      Broken: content,
+      });
+    }).catch((err) => {
+      reject(err)
+    })    
+  })
+}
 
 
-validateLinks(__dirname + '/READMEE.md').then((data) => {
-  console.log(data); 
+
+optionStatsValidate(__dirname + '/READMEE.md').then((data) => {
+console.log(data); 
 });
 
-// fetch('https://es.wikipedia.org/wiki/Markdon', {  
-// }).then((res) => { 
-//   console.log(res)  
-// });
+
 
 
 
@@ -99,20 +134,6 @@ validateLinks(__dirname + '/READMEE.md').then((data) => {
 
 
 
-// const rutaValida = route => fs.existsSync(route);
 
-// const rutaAbsoluta = route => path.isAbsolute(route);
-
-// const rutaRelativa = route => path.resolve(route);
-
-// const extension = route => path.extname(route)
-
-// console.log(rutaValida('README.md'));
-
-// console.log(rutaAbsoluta('/README.md'));
-
-// console.log(extension('README.md'));
-
-// console.log(rutaRelativa('/README.md'));
 
 
