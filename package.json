@@ -1,6 +1,28 @@
 {
-  "name": "md-links",
-  "version": "0.1.0",
+  "name": "sg-md-links",
+  "version": "1.0.0",
+  "description": "get link information in a markdown file",
+  "main": "./src/index.js",
+  "author": "Sthephany Granados",
+  "repository": {
+    "url": "https://github.com/Sthephany04/bog001-md-links"
+  },
+  "bin": {
+    "md-links": "./bin/global.js"
+  },
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "preferGlobal": true,
+  "keywords": [
+    "markdown",
+    "node.js",
+    "promises",
+    "laboratoria",
+    "md-links"
+
+  ],
+  "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.0",
     "markdown-it": "^11.0.0",

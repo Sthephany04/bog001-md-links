@@ -1,11 +1,11 @@
-const mdLinks = require('./index.js');
+#!/usr/bin/env node
+
+const mdLinks = require('../src');
 const process = require('process');
 const chalk = require('chalk');
 
-
-
-//const route = process.argv[2];
-const route = `${__dirname}`;
+const route = process.argv[2];
+//const route = `${__dirname}/../prueba`;
 
 //console.log(route)
 

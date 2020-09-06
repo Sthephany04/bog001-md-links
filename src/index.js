@@ -58,8 +58,6 @@ const directoryOrFile = route => {
   }
 }
 
-// console.log(directoryOrFile(__dirname + 'READMEE.md'));
-
 // Opcion --validate 
 const validateLinks = route => {
   return new Promise((resolve, reject) => {
@@ -158,9 +156,7 @@ module.exports = mdLinks;
 
 
 
-// optionStatsValidate(__dirname + '/READMEE.md').then((data) => {
-//   console.log(data); 
-// });
+
 
 
 
