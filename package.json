@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "author": "Sthephany Granados",
   "repository": {
-    "url": "https://github.com/Sthephany04/bog001-md-links"
+    "url": "git+https://github.com/Sthephany04/bog001-md-links"
   },
   "bin": {
     "md-links": "./bin/global.js"
