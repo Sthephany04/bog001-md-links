@@ -1,5 +1,5 @@
 {
-  "name": "sg-md-links",
+  "name": "@sg-md-links",
   "version": "1.0.0",
   "description": "get link information in a markdown file",
   "main": "./src/index.js",
@@ -9,6 +9,9 @@
   },
   "bin": {
     "md-links": "./bin/global.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "test": "jest --verbose --coverage"
