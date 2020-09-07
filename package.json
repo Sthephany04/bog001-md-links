@@ -15,12 +15,12 @@
   },
   "preferGlobal": true,
   "keywords": [
+    "javascript",
     "markdown",
     "node.js",
     "promises",
     "laboratoria",
     "md-links"
-
   ],
   "license": "MIT",
   "dependencies": {

@@ -3,11 +3,13 @@
 const mdLinks = require('../src');
 const process = require('process');
 const chalk = require('chalk');
+const path = require('path');
 
-const route = process.argv[2];
+let route = process.argv[2];
+route = path.resolve(route);
 //const route = `${__dirname}/../prueba`;
 
-//console.log(route)
+console.log(route)
 
 let options = {
   validate: false,
@@ -39,7 +41,7 @@ mdLinks(route, options).then((res) => {
       console.log ( chalk.bgGray(`Archivo: ${res[i].File}`) + " " + chalk.cyanBright(`Links Unicos: ${res[i].Unique}`) + " " + chalk.redBright(`Links Totales: ${res[i].Total}`) + " " + chalk.greenBright(`Links rotos: ${res[i].Broken}`));     
     };
 
-  } else if (process.argv[2] && process.argv[3] != options)  {
+  } else if (process.argv[3] && process.argv[4] != options)  {
     console.log('Ingresa una opcion valida por favor');
   
   } else if (options) {    
