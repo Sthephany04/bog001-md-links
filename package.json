@@ -1,6 +1,6 @@
 {
   "name": "@sthephany04/md-links",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "get link information in a markdown file",
   "main": "./src/index.js",
   "author": "Sthephany Granados",
