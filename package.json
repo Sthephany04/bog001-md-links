@@ -1,11 +1,14 @@
 {
-  "name": "sg-md-links",
+  "name": "@sthephany04/md-links",
   "version": "1.0.5",
   "description": "get link information in a markdown file",
   "main": "./src/index.js",
   "author": "Sthephany Granados",
   "repository": {
-    "url": "git://github.com/Sthephany04/md-links"
+    "url": "git://github.com/sthephany04/md-links"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "bin": {
     "md-links": "./bin/global.js"
