@@ -4,11 +4,9 @@ const path = require('path');
 const fs = require('fs');
 
 const rutaRelativa = route => path.resolve(route);
-// console.log(rutaRelativa(__dirname + 'README.md'));
 
 //Leer el archivo .md
-const readFile = route => { 
-  // console.log(route)
+const readFile = route => {  
   return new Promise((resolve, reject) => {   
     fs.readFile(route, 'utf8', (err, data) => {
       if (err) {
@@ -18,6 +16,7 @@ const readFile = route => {
     })       
   });
 };
+
 //Obtener links e informacion
 const getLinks = route => {
   return new Promise ((resolve, reject) => {
@@ -42,6 +41,7 @@ const getLinks = route => {
   });
 };
 
+// Identificar si es un archivo o directorio
 const directoryOrFile = route => {
   const filesMd = [];
   if (path.extname(route) === '.md'){
@@ -49,8 +49,8 @@ const directoryOrFile = route => {
     return filesMd
   } else {
     const files = fs.readdirSync(route)              
-    const filesMdd = files.filter(file => path.extname(file) === '.md' )
-    filesMdd.forEach((elem) => {
+    const filesFilter = files.filter(file => path.extname(file) === '.md' )
+    filesFilter.forEach((elem) => {
       const validFiles = path.join(route, elem);
       filesMd.push(validFiles)
     })   
@@ -63,8 +63,7 @@ const validateLinks = route => {
   return new Promise((resolve, reject) => {
     getLinks(route).then((link) => {
       let statusLinks = link.map((elem) => {        
-        return fetch(elem.URL).then((res) => {
-          // console.log(statusLinks);
+        return fetch(elem.URL).then((res) => {         
           if(res.status <= 299) {
             elem.status = "OK";
             elem.statusNumber = res.status;
@@ -112,8 +111,7 @@ const optionStatsValidate = route => {
         if (elem.status !== 'OK') {
           content += 1;
         }
-      })
-      // console.log(content);      
+      })          
       resolve({
       File: rutaRelativa(route),
       Unique: linksUnique.size,
@@ -129,8 +127,7 @@ const optionStatsValidate = route => {
 const mdLinks = (route, options) => {
   return new Promise ((resolve, reject) => {
     const filesDirectory = directoryOrFile(route); 
-    let variables = filesDirectory.map((elem) => {
-      //console.log(elem);
+    let variables = filesDirectory.map((elem) => {      
       if (options.validate && !options.stats) {    
         return validateLinks(elem);
       } else if (options.stats && !options.validate) {
@@ -143,9 +140,8 @@ const mdLinks = (route, options) => {
     })
     
     Promise.all(variables).then((res) => {
-      let myNewArray = [].concat.apply([], res);
-      //console.log(myNewArray);
-      resolve(myNewArray);        
+      let newArray = [].concat.apply([], res);      
+      resolve(newArray);        
     }).catch(err => {
       reject(err)
     })

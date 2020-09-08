@@ -5,12 +5,9 @@ const process = require('process');
 const chalk = require('chalk');
 const path = require('path');
 
-// let route = process.argv[2];
-// route = path.resolve(route);
-const route = '/mnt/c/Users/Laboratoria2/bog001-md-links/test/test_directory/README.md';
-
-
-console.log(route)
+let route = process.argv[2];
+route = path.resolve(route);
+// const route = '/mnt/c/Users/Laboratoria2/bog001-md-links/test/test_directory/README.md';
 
 let options = {
   validate: false,
@@ -36,14 +33,13 @@ mdLinks(route, options).then((res) => {
       console.log ( chalk.bgGray(`Archivo: ${res[i].File}`) + " " + chalk.cyanBright(`Links Unicos: ${res[i].Unique}`) + " " + chalk.redBright(`Links Totales: ${res[i].Total}`));     
     };    
     
-  } else if (options.validate && options.stats) {    
-    console.log(res);    
+  } else if (options.validate && options.stats) {       
     for (const i in res) {
       console.log ( chalk.bgGray(`Archivo: ${res[i].File}`) + " " + chalk.cyanBright(`Links Unicos: ${res[i].Unique}`) + " " + chalk.redBright(`Links Totales: ${res[i].Total}`) + " " + chalk.greenBright(`Links rotos: ${res[i].Broken}`));     
     };
     
   } else if (process.argv[3] && process.argv[4] != options)  {
-    console.log('Ingresa una opcion valida por favor');
+    console.log(chalk.greenBright('Ingresa una opcion valida por favor'));
     
   } else if (options) {
     let links = res.map((elemento) => chalk.black.bgGray(elemento.File) + " " + chalk.cyanBright(elemento.URL) + " " + chalk.whiteBright(elemento.Text));
