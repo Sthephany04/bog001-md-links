@@ -1,18 +1,15 @@
 {
-  "name": "@sthephany04/md-links",
-  "version": "1.0.0",
+  "name": "sg-md-links",
+  "version": "1.0.5",
   "description": "get link information in a markdown file",
   "main": "./src/index.js",
   "author": "Sthephany Granados",
   "repository": {
-    "url": "git://github.com/Sthephany04/bog001-md-links"
+    "url": "git://github.com/Sthephany04/md-links"
   },
   "bin": {
     "md-links": "./bin/global.js"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
+  },  
   "scripts": {
     "test": "jest --verbose --coverage"
   },
