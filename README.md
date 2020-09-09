@@ -83,21 +83,38 @@ $ npm install Sthephany04/md-links
 ```js
 const mdLinks = require("@sthephany04/md-links");
 
-mdLinks("./some/example.md")
+//obtener datos de un archivo markdown [{ href, text, file }]
+mdLinks("some/example.md", { validate: false, stats: false})
   .then(links => {
-    // => [{ href, text, file }]
+    console.log(links)
   })
   .catch(console.error);
 
-mdLinks("./some/example.md", { validate: true })
+//Obtener datos [{ href, text, file, status, ok }]
+mdLinks("./some/example.md", { validate: true, stats: false })
   .then(links => {
-    // => [{ href, text, file, status, ok }]
+    console.log(links)
   })
   .catch(console.error);
 
-mdLinks("./some/dir")
+//Obtener estadisticas [{ total, unicos }]
+mdLinks("./some/example.md", { validate: false, stats: true })
   .then(links => {
-    // => [{ href, text, file }]
+    console.log(links)
+  })
+  .catch(console.error);
+
+//Obtener estadisticas y validacion de links [{ total, unique, broken }]
+mdLinks("./some/example.md", { validate: true, stats: true })
+  .then(links => {
+    console.log(links)
+  })
+  .catch(console.error);
+
+//obtener datos de un directorio [{ href, text, file }]
+mdLinks("some/dir")
+  .then(links => {
+    console.log(links)
   })
   .catch(console.error);
 ```
