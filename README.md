@@ -189,6 +189,7 @@ las siguientes propiedades:
 * [x] Manejo de repositorios de GitHub (clone | fork | gh-pages)
 * [ ] Colaboración en Github (branches | pull requests | |tags)
 * [x] Organización en Github (projects | issues | labels | milestones)
+* Probar issues y pull request
 
 ### HTTP
 
